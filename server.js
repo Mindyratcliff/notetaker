@@ -11,7 +11,7 @@ const PORT = process.env.port || 8080;
 //Serves public folder
 app.use(express.static(__dirname + "/public"));
 ​
-// Sets up the Express app to handle data parsing Allows assumption of JSON
+// Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
