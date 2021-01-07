@@ -1,7 +1,7 @@
 //Imports
 const express = require("express");
 const app = express();
-const fs = require('fs');
+
 ​
 const PORT = process.env.port || 8080;
 ​
@@ -23,7 +23,7 @@ app.get("/", function (req, res) {
     res.sendFile(__dirname + "/index.html");
 });
 ​
-app.get("/reserve", function (req, res) {
+app.get("/notes", function (req, res) {
     res.sendFile(__dirname + "/notes.html");
 });
 ​
@@ -62,16 +62,6 @@ app.delete("/api/clear", function (req, res) {
     res.sendStatus(200);
 });
 ​
-/**
- * Static Functions
- */
-​
- function writesNotes (newNote){
-    notes.push(newNote);
-    fs.readFile('notes.html', err() 
-    }
-    $('.note-textarea').append(newNote);
- };
 ​
 ​
 app.listen(PORT);
