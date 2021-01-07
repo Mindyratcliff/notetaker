@@ -6,7 +6,7 @@ const app = express();
 const PORT = process.env.port || 8080;
 ​
 
-let notes = [];
+var notes = [];
 ​
 ​
 //Serves public folder
@@ -25,6 +25,7 @@ app.get("/", function (req, res) {
 ​
 app.get("/notes", function (req, res) {
     res.sendFile(__dirname + "/notes.html");
+    return res.json(notes);
 });
 ​
 ​
@@ -47,6 +48,9 @@ app.get("/api/:funct", function (req, res) {
  */
 app.post("/api/notes", function (req, res) {
 ​
+        var newNote = req.body;
+        notes.push(newNote);
+        res.json(newNote);
         res.sendStatus(200);
     
 ​
@@ -64,5 +68,7 @@ app.delete("/api/clear", function (req, res) {
 ​
 ​
 ​
-app.listen(PORT);
+app.listen(PORT, function(){
 ​
+console.log(`server at http://localhost:${PORT}  ...`);
+});
