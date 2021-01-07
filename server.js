@@ -24,5 +24,5 @@ require("./routes/htmlRoutes")(app);
 ​
 app.listen(PORT, function(){
 ​
-console.log(`server at http://localhost:${PORT}  ...`);
+console.log(`server is running...`);
 });
