@@ -1,28 +1,18 @@
 //Imports
+
 const express = require("express");
-//Tell node to create the express server
+const path = require("path");
+
 const app = express();
 
-​//Initial Port
-const PORT = process.env.port || 8080;
-​
-​
-​
-//Serves public folder
-app.use(express.static(__dirname + "/public"));
-​
-// Middleware
-app.use(express.urlencoded({ extended: true }));
+let PORT = process.env.port || 8080;
+
+app.use(express.static(path.join(__dirname, "/public")));
+app.use(express.urlencoded({extended:true}));
 app.use(express.json());
-
-//Routes
-
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
-​
-//Listener
-​
-app.listen(PORT, function(){
-​
-console.log(`server is running...`);
+
+app.listen(PORT, () => {
+    console.log("server is running...");
 });
