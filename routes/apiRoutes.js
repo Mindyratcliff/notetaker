@@ -7,15 +7,20 @@ module.exports = function(app) {
     app.get("/api/notes", function(req, res) {
       fs.readFile("db/db.json", (err, data) => {
         if(err) throw err;
-        return(data);
+        res.json(JSON.parse(data));
       })
+      
     });
   
   
     app.post("/api/notes", function(req, res) {
-        notes.push(req.body);
-        res.json(true);
-        console.log(notes);
+        var newNote = req.body;
+        fs.readFile("db/db.json", (err, data) => {
+          if (err) throw err;
+          var notes = res.json(JSON.parse(data));
+          notes.push(newNote);
+        })
+        fs.appendFile("db/db.json", JSON.stringify(notes));
       
     });
   
