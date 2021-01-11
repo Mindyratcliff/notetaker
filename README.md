@@ -36,7 +36,6 @@ Access it here:
 
 [Heroku](https://ratcliffnotetaker.herokuapp.com/)
 
-[GitHub](https://mindyratcliff.github.io/notetaker/)
 
 Full Demo 
 ![FullDemo](screenshot.gif)
