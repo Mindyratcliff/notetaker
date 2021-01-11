@@ -20,7 +20,12 @@ module.exports = function(app) {
           var notes = res.json(JSON.parse(data));
           notes.push(newNote);
         })
-        fs.appendFile("db/db.json", JSON.stringify(notes));
+        fs.appendFile("db/db.json", JSON.stringify(notes), (err, data) =>{
+          if (err) throw err;
+          console.log("A new note is added to the Note List.");
+        });
+
+        res.send(notes);
       
     });
   
