@@ -1,15 +1,21 @@
+const fs = require("fs");
 
 module.exports = function(app) {
     
   
-  
+
     app.get("/api/notes", function(req, res) {
-      res.json(noteListItems);
+      fs.readFile("db/db.json", (err, data) => {
+        if(err) throw err;
+        return(data);
+      })
     });
+  
   
     app.post("/api/notes", function(req, res) {
         notes.push(req.body);
         res.json(true);
+        console.log(notes);
       
     });
   
@@ -19,4 +25,5 @@ module.exports = function(app) {
   
       res.json({ ok: true });
     });
-  };
+    
+};
