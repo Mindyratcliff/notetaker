@@ -44,7 +44,7 @@ module.exports = function(app) {
   
   
     app.post("/api/clear", function(req, res) {
-      notes.length = 0;
+      notes = {};
   
       res.json({ ok: true });
     });
