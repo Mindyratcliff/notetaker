@@ -43,10 +43,17 @@ module.exports = function(app) {
     });
   
   
-    app.post("/api/clear", function(req, res) {
-      notes = {};
-  
-      res.json({ ok: true });
-    });
-    
-};
+    app.DELETE("/api/notes/", function(req, res) {
+        
+        fs.writeFile("db/db.json", JSON.stringify(notes), "utf-8", (err, data) =>{
+          if (err) throw err;
+          
+
+          notes = "";
+
+          
+        });
+        return res.send(notes);
+        });
+    };
+          
